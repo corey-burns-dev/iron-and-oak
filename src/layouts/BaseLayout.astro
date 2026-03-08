@@ -1,0 +1,153 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+}
+
+const {
+  title,
+  description = "Iron & Oak is a premium construction and structural engineering firm specializing in custom builds, major renovations, and commercial construction across the United States.",
+  canonical
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Iron & Oak Construction" />
+
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    {canonical && <link rel="canonical" href={canonical} />}
+
+    <title>{title}</title>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+    <!-- Navigation -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Iron & Oak — Home">
+          <div class="nav-logo-icon" aria-hidden="true">IO</div>
+          <span class="nav-logo-text">Iron & Oak</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="/" aria-current={currentPath === "/" ? "page" : undefined}>Home</a>
+          <a href="/about" aria-current={currentPath === "/about" ? "page" : undefined}>About</a>
+          <a href="/services" aria-current={currentPath === "/services" ? "page" : undefined}>Services</a>
+          <a href="/portfolio" aria-current={currentPath === "/portfolio" ? "page" : undefined}>Portfolio</a>
+          <a href="/contact" aria-current={currentPath === "/contact" ? "page" : undefined}>Contact</a>
+        </div>
+
+        <a href="/contact" class="btn btn-primary nav-cta">Request Quote</a>
+
+        <button class="nav-mobile-toggle" aria-label="Toggle menu" aria-expanded="false" id="mobile-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/services">Services</a>
+      <a href="/portfolio">Portfolio</a>
+      <a href="/contact">Contact</a>
+      <a href="/contact" class="btn btn-primary" style="margin-top: 1rem; justify-content: center;">Request Quote</a>
+    </div>
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="/" class="nav-logo" aria-label="Iron & Oak — Home">
+              <div class="nav-logo-icon" aria-hidden="true" style="width:1.5rem;height:1.5rem;font-size:0.625rem;">IO</div>
+              <span class="nav-logo-text" style="font-size:1.125rem;">Iron & Oak</span>
+            </a>
+            <p>A full-service structural engineering and construction firm dedicated to high-spec architecture and commercial precision since 1998.</p>
+          </div>
+
+          <div>
+            <h3 class="footer-heading">Contact</h3>
+            <ul class="footer-list">
+              <li class="contact-item">1102 Industrial Way</li>
+              <li class="contact-item">Chicago, IL 60611</li>
+              <li class="contact-item">info@ironandoak.com</li>
+              <li class="contact-item">+1 (312) 555-0198</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="footer-heading">Navigation</h3>
+            <ul class="footer-list">
+              <li><a href="/services">Residential</a></li>
+              <li><a href="/services">Commercial</a></li>
+              <li><a href="/about">Safety Standards</a></li>
+              <li><a href="/about">Credentials</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="footer-heading">Connect</h3>
+            <ul class="footer-list">
+              <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
+              <li><a href="#" aria-label="Instagram">Instagram</a></li>
+              <li><a href="#" aria-label="Behance">Behance</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>&copy; 2026 Iron & Oak Construction Group AG</span>
+          <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Accessibility</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById('mobile-toggle');
+      const menu = document.getElementById('mobile-menu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          const expanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!expanded));
+          menu.classList.toggle('active');
+          document.body.style.overflow = expanded ? '' : 'hidden';
+        });
+      }
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

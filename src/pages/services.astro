@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const services = [
+  {
+    icon: "home",
+    title: "Custom Home Builds",
+    desc: "From foundation to finish, we build residences that stand as benchmarks of quality. Our custom homes blend architectural innovation with structural integrity, creating spaces that families cherish for generations.",
+    features: ["Architectural Design", "Foundation Engineering", "Custom Millwork", "Smart Home Integration", "Landscape Architecture", "Interior Design Coordination"]
+  },
+  {
+    icon: "hammer",
+    title: "Major Renovations",
+    desc: "Transforming existing structures into modern masterpieces. We specialize in radical transformations that respect the original character while introducing contemporary efficiency and aesthetics.",
+    features: ["Historical Preservation", "Structural Reinforcement", "Building Envelope Upgrades", "Code Compliance", "Adaptive Reuse", "Energy Retrofitting"]
+  },
+  {
+    icon: "building",
+    title: "Commercial Construction",
+    desc: "High-spec retail, office, and industrial spaces engineered for durability and business performance. We deliver commercial environments that maximize operational efficiency and employee well-being.",
+    features: ["Office Build-Outs", "Retail Spaces", "Industrial Facilities", "Medical Facilities", "Restaurant Fit-Outs", "Warehouse Construction"]
+  },
+  {
+    icon: "compass",
+    title: "Design-Build Services",
+    desc: "A seamless pipeline from initial concept to final walkthrough, managed by one team. Our integrated approach eliminates the friction between design and construction, saving time and reducing costs.",
+    features: ["Conceptual Design", "Cost Estimation", "Permitting & Approvals", "Construction Management", "Quality Assurance", "Post-Occupancy Support"]
+  }
+];
+
+const processSteps = [
+  {
+    step: "01",
+    title: "Discovery & Assessment",
+    desc: "We begin every project with an exhaustive discovery phase. Our team conducts on-site assessments, reviews existing documentation, and works closely with you to understand your vision, budget, and timeline constraints."
+  },
+  {
+    step: "02",
+    title: "Design & Engineering",
+    desc: "Our in-house architects and engineers develop detailed structural models using advanced BIM technology. Every material is specified, every load calculated, and every detail documented before ground is broken."
+  },
+  {
+    step: "03",
+    title: "Construction & Execution",
+    desc: "Our experienced project managers coordinate subcontractors, manage timelines, and enforce zero-tolerance quality standards. Real-time reporting keeps you informed at every stage of the build process."
+  },
+  {
+    step: "04",
+    title: "Commissioning & Handover",
+    desc: "Before handover, every system is tested, every surface inspected, and every specification verified. We conduct a comprehensive walkthrough with you and provide detailed maintenance documentation for the life of your structure."
+  }
+];
+---
+
+<BaseLayout title="Services — Iron & Oak Construction" description="Explore Iron & Oak's full range of construction services including custom home builds, major renovations, commercial construction, and design-build services.">
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <span class="label">What We Do</span>
+      <h1>Our Services</h1>
+      <p>Comprehensive construction solutions engineered for excellence, from concept to completion.</p>
+    </div>
+  </header>
+
+  <!-- Services Detail -->
+  <section class="section" aria-labelledby="services-detail-heading">
+    <h2 class="sr-only" id="services-detail-heading">Service Details</h2>
+    <div class="container">
+      {services.map((service, i) => (
+        <div class="content-section" style={`margin-bottom: ${i < services.length - 1 ? '6rem' : '0'}; ${i % 2 === 1 ? 'direction: rtl;' : ''}`}>
+          <div style={i % 2 === 1 ? 'direction: ltr;' : ''}>
+            <div class="service-card" style="border: 1px solid rgba(255,255,255,0.05); padding: 3rem;">
+              <div class="service-card-icon" aria-hidden="true">
+                {service.icon === "home" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                )}
+                {service.icon === "hammer" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9"/><path d="M17.64 15 22 10.64"/><path d="m20.91 11.7-1.25-1.25c-.6-.6-.93-1.4-.93-2.25v-.86L16.01 4.6a5.56 5.56 0 0 0-3.94-1.64H9l.92.82A6.18 6.18 0 0 1 12 8.4v1.56l2 2h2.47l2.26 1.91"/></svg>
+                )}
+                {service.icon === "building" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
+                )}
+                {service.icon === "compass" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                )}
+              </div>
+              <h3 style="font-size: 1.75rem; margin-bottom: 1rem;">{service.title}</h3>
+              <p style="color: var(--color-neutral-400); line-height: 1.8; margin-bottom: 2rem;">{service.desc}</p>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                {service.features.map((feature) => (
+                  <div class="ba-check-item">
+                    <svg class="ba-check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span style="font-size: 0.75rem;">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div class="content-text" style={i % 2 === 1 ? 'direction: ltr;' : ''}>
+            <span class="label">Service {String(i + 1).padStart(2, "0")}</span>
+            <h2>{service.title}</h2>
+            <p>{service.desc}</p>
+            <a href="/contact" class="btn btn-primary" style="margin-top: 1rem;">
+              Request a Consultation
+              <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section bg-navy" aria-labelledby="process-heading">
+    <div class="container">
+      <div class="process-header">
+        <h2 id="process-heading">Our Process</h2>
+        <p>A rigorous four-stage pipeline designed to eliminate friction and ensure architectural precision.</p>
+      </div>
+
+      <div class="process-grid">
+        {processSteps.map((p) => (
+          <div class="process-step">
+            <span class="process-step-number" aria-hidden="true">{p.step}</span>
+            <div class="process-step-content">
+              <h4>{p.title}</h4>
+              <p>{p.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner" aria-labelledby="services-cta-heading">
+    <div class="cta-banner-bg" aria-hidden="true"></div>
+    <div class="cta-banner-overlay" aria-hidden="true"></div>
+    <div class="cta-banner-content">
+      <h2 id="services-cta-heading">Let's Discuss Your Project</h2>
+      <p>Every great structure begins with a conversation. Tell us about your vision.</p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-dark">
+          Start a Conversation
+          <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

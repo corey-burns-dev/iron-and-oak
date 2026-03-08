@@ -1,0 +1,293 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+
+import heroImg from '../assets/images/hero.jpg';
+import glassHouseImg from '../assets/images/project-glass-house.jpg';
+import apexPlazaImg from '../assets/images/project-apex-plaza.jpg';
+import heritageLoftImg from '../assets/images/project-heritage-loft.jpg';
+import beforeImg from '../assets/images/before.jpg';
+import after1Img from '../assets/images/after-1.jpg';
+import after2Img from '../assets/images/after-2.jpg';
+
+const services = [
+  {
+    title: "Custom Home Builds",
+    desc: "From foundation to finish, we build residences that stand as benchmarks of quality.",
+    icon: "home"
+  },
+  {
+    title: "Major Renovations",
+    desc: "Transforming existing structures into modern masterpieces with structural integrity.",
+    icon: "hammer"
+  },
+  {
+    title: "Commercial Construction",
+    desc: "High-spec retail and office spaces engineered for durability and business performance.",
+    icon: "building"
+  },
+  {
+    title: "Design-Build Services",
+    desc: "A seamless pipeline from initial concept to final walkthrough, managed by one team.",
+    icon: "compass"
+  }
+];
+
+const projects = [
+  {
+    title: "The Glass House",
+    location: "Greenwich, CT",
+    image: glassHouseImg,
+    category: "Residential"
+  },
+  {
+    title: "Apex Plaza",
+    location: "Austin, TX",
+    image: apexPlazaImg,
+    category: "Commercial"
+  },
+  {
+    title: "Heritage Loft",
+    location: "Brooklyn, NY",
+    image: heritageLoftImg,
+    category: "Renovation"
+  }
+];
+
+const testimonials = [
+  {
+    name: "Marcus Thorne",
+    role: "CEO, Thorne Group",
+    location: "Chicago, IL",
+    text: "Iron & Oak doesn't just build; they engineer confidence. Their attention to structural detail is unmatched in the industry."
+  },
+  {
+    name: "Elena Rodriguez",
+    role: "Homeowner",
+    location: "Miami, FL",
+    text: "The most professional crew I've ever worked with. They stayed on schedule and handled every challenge with technical expertise."
+  }
+];
+
+const processSteps = [
+  { step: "01", title: "Conceptual Audit", desc: "Technical feasibility study and rigorous cost-benefit analysis." },
+  { step: "02", title: "Precision Design", desc: "Detailed structural modeling and material specification." },
+  { step: "03", title: "Aggressive Build", desc: "Coordinated site management with zero-tolerance quality checks." },
+  { step: "04", title: "Final Delivery", desc: "Rigorous commissioning and structured project handover." }
+];
+---
+
+<BaseLayout title="Iron & Oak — Premium Construction & Structural Engineering">
+
+  <!-- Hero Section -->
+  <section class="hero" aria-label="Welcome">
+    <div class="hero-bg">
+      <div class="hero-overlay"></div>
+      <Image
+        src={heroImg}
+        alt="Active construction site with structural steel framework"
+        width={2400}
+        height={1600}
+        loading="eager"
+        format="webp"
+      />
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-inner">
+        <span class="label">Premium Construction AG</span>
+        <h1>Built for <br /><span>Generations.</span></h1>
+        <p class="hero-description">
+          We specialize in complex, high-stakes construction where precision is non-negotiable and quality is the only standard.
+        </p>
+        <div class="hero-actions">
+          <a href="/contact" class="btn btn-primary">
+            Request a Quote
+            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="/portfolio" class="btn btn-outline">View Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="section services" aria-labelledby="services-heading">
+    <div class="container">
+      <div class="services-header">
+        <div class="services-header-text">
+          <span class="label">Core Capabilities</span>
+          <h2 id="services-heading">Engineering Excellence Across Every Sector</h2>
+        </div>
+        <p class="services-header-sub">
+          From residential sanctuaries to industrial hubs, our team delivers structural integrity without compromise.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        {services.map((service) => (
+          <div class="service-card">
+            <div class="service-card-icon" aria-hidden="true">
+              {service.icon === "home" && (
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              )}
+              {service.icon === "hammer" && (
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9"/><path d="M17.64 15 22 10.64"/><path d="m20.91 11.7-1.25-1.25c-.6-.6-.93-1.4-.93-2.25v-.86L16.01 4.6a5.56 5.56 0 0 0-3.94-1.64H9l.92.82A6.18 6.18 0 0 1 12 8.4v1.56l2 2h2.47l2.26 1.91"/></svg>
+              )}
+              {service.icon === "building" && (
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
+              )}
+              {service.icon === "compass" && (
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+              )}
+            </div>
+            <h4>{service.title}</h4>
+            <p>{service.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Showcase -->
+  <section class="section" aria-labelledby="portfolio-heading">
+    <div class="container">
+      <div class="portfolio-header">
+        <h2 id="portfolio-heading">Landmark Projects</h2>
+        <a href="/portfolio" class="portfolio-link">View Archive</a>
+      </div>
+
+      <div class="portfolio-grid">
+        {projects.map((project) => (
+          <article class="project-card">
+            <div class="project-card-image">
+              <Image
+                src={project.image}
+                alt={`${project.title} — ${project.category} project in ${project.location}`}
+                width={600}
+                height={750}
+                format="webp"
+                loading="lazy"
+              />
+              <span class="project-card-badge">{project.category}</span>
+            </div>
+            <h4>{project.title}</h4>
+            <p class="project-card-location">{project.location}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Before & After Section -->
+  <section class="section before-after" aria-labelledby="renovation-heading">
+    <div class="container">
+      <div class="before-after-grid">
+        <div class="ba-images">
+          <div class="ba-images-grid">
+            <div>
+              <div class="ba-image ba-image-square ba-image-before" style="margin-bottom: 1rem;">
+                <Image src={beforeImg} alt="Building before renovation" width={400} height={400} format="webp" loading="lazy" />
+                <span class="ba-image-label ba-image-label-before">Before</span>
+              </div>
+              <div class="ba-image ba-image-tall">
+                <Image src={after1Img} alt="Beautifully renovated modern bathroom" width={400} height={533} format="webp" loading="lazy" />
+                <span class="ba-image-label ba-image-label-after">After</span>
+              </div>
+            </div>
+            <div class="ba-col-offset">
+              <div class="ba-image ba-image-tall">
+                <Image src={after2Img} alt="Modern office space after renovation" width={400} height={533} format="webp" loading="lazy" />
+                <span class="ba-image-label ba-image-label-after">After</span>
+              </div>
+            </div>
+          </div>
+          <div class="ba-glow" aria-hidden="true"></div>
+        </div>
+
+        <div class="ba-content">
+          <span class="label">Revitalization</span>
+          <h2 id="renovation-heading">Transformation Through Structural Design</h2>
+          <p>We specialize in radical transformations. Our renovation team strips structures back to their core essence, rebuilding them with contemporary efficiency and timeless aesthetics.</p>
+          <div class="ba-checklist" role="list">
+            {["Historical Preservations", "Structural Reinforcement", "Building Envelope Upgrades", "Modern Integration"].map((item) => (
+              <div class="ba-check-item" role="listitem">
+                <svg class="ba-check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section" aria-labelledby="process-heading">
+    <div class="container">
+      <div class="process-header">
+        <h2 id="process-heading">Our Process</h2>
+        <p>A rigorous four-stage pipeline designed to eliminate friction and ensure architectural precision.</p>
+      </div>
+
+      <div class="process-grid">
+        {processSteps.map((p) => (
+          <div class="process-step">
+            <span class="process-step-number" aria-hidden="true">{p.step}</span>
+            <div class="process-step-content">
+              <h4>{p.title}</h4>
+              <p>{p.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section testimonials" aria-labelledby="testimonials-heading">
+    <div class="container">
+      <h2 class="sr-only" id="testimonials-heading">Client Testimonials</h2>
+      <div class="testimonials-grid">
+        {testimonials.map((t) => (
+          <blockquote class="testimonial-card">
+            <svg class="testimonial-quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+            <p class="testimonial-text">"{t.text}"</p>
+            <footer>
+              <cite class="testimonial-name" style="font-style: normal;">{t.name}</cite>
+              <span class="testimonial-role">{t.role} — {t.location}</span>
+            </footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner" aria-labelledby="cta-heading">
+    <div class="cta-banner-bg" aria-hidden="true"></div>
+    <div class="cta-banner-overlay" aria-hidden="true"></div>
+    <div class="cta-banner-content">
+      <h2 id="cta-heading">Ready to Build <br />Your Legacy?</h2>
+      <p>We are currently accepting inquiries for Q3 2026.<br />Slots are limited to ensure obsessive attention to detail.</p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-dark">
+          Initiate Inquiry
+          <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="/about" class="btn btn-dark-outline">Download Credentials</a>
+      </div>
+      <div class="cta-meta" aria-label="Quick stats">
+        <div class="cta-meta-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Booking Fast
+        </div>
+        <div class="cta-meta-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          25+ Awards
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

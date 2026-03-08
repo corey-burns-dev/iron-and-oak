@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+
+import teamImg from '../assets/images/about-team.jpg';
+import officeImg from '../assets/images/about-office.jpg';
+
+const team = [
+  { name: "James Calloway", role: "Founder & CEO", initials: "JC" },
+  { name: "Margaret Chen", role: "Chief Architect", initials: "MC" },
+  { name: "David Okonkwo", role: "Head of Engineering", initials: "DO" },
+  { name: "Sarah Lindström", role: "VP Operations", initials: "SL" }
+];
+
+const awards = [
+  { year: "2025", title: "AIA National Honor Award", org: "American Institute of Architects" },
+  { year: "2024", title: "Best Commercial Project", org: "ENR Midwest" },
+  { year: "2024", title: "Safety Excellence Award", org: "OSHA" },
+  { year: "2023", title: "Sustainable Builder of the Year", org: "USGBC" },
+  { year: "2023", title: "Design-Build Excellence", org: "DBIA" },
+  { year: "2022", title: "Residential Project of the Year", org: "NAHB" }
+];
+---
+
+<BaseLayout title="About — Iron & Oak Construction" description="Learn about Iron & Oak's 27-year history of structural excellence, our leadership team, and the awards that validate our commitment to quality.">
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <span class="label">About Us</span>
+      <h1>Building Since 1998</h1>
+      <p>For over 27 years, Iron & Oak has delivered uncompromising structural excellence to clients across the United States.</p>
+    </div>
+  </header>
+
+  <!-- Stats Bar -->
+  <section class="section" style="padding-top: 4rem; padding-bottom: 4rem;" aria-label="Company Statistics">
+    <div class="container">
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-number">27+</div>
+          <div class="stat-label">Years in Business</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">340+</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">$2.1B</div>
+          <div class="stat-label">Total Value Delivered</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section class="section" aria-labelledby="story-heading">
+    <div class="container">
+      <div class="content-section">
+        <div class="content-image">
+          <Image src={teamImg} alt="Iron & Oak construction team on site" width={800} height={600} format="webp" loading="lazy" />
+        </div>
+        <div class="content-text">
+          <span class="label">Our Story</span>
+          <h2 id="story-heading">Founded on Precision, Built on Trust</h2>
+          <p>Iron & Oak was founded in 1998 by James Calloway, a structural engineer who believed the construction industry needed a higher standard. Starting with a crew of five in a small Chicago workshop, James set out to build structures that would outlast trends and withstand time.</p>
+          <p>Today, we're a team of over 200 professionals spanning architecture, engineering, project management, and skilled trades. We've completed more than 340 projects across 14 states, ranging from custom residences to large-scale commercial developments.</p>
+          <p>Our approach hasn't changed: every project receives the same obsessive attention to detail, whether it's a $500K renovation or a $50M commercial complex. We don't cut corners because our name is on every beam, every joint, and every finished surface.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="section bg-navy" aria-labelledby="mission-heading">
+    <div class="container">
+      <div class="content-section">
+        <div class="content-text">
+          <span class="label">Our Mission</span>
+          <h2 id="mission-heading">Engineering Legacy Through Uncompromising Quality</h2>
+          <p>We exist to push the boundaries of structural engineering and construction. Every project is an opportunity to prove that exceptional quality, innovative design, and disciplined execution can coexist at scale.</p>
+          <p>We invest in our people, our processes, and our technology. Our BIM modeling, AI-driven scheduling, and proprietary quality assurance systems ensure that every project is delivered on time, on budget, and beyond expectations.</p>
+        </div>
+        <div class="content-image">
+          <Image src={officeImg} alt="Modern office workspace at Iron & Oak headquarters" width={800} height={600} format="webp" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership Team -->
+  <section class="section" aria-labelledby="team-heading">
+    <div class="container">
+      <div class="process-header">
+        <h2 id="team-heading">Leadership Team</h2>
+        <p>The architects of our vision and the engineers of our culture.</p>
+      </div>
+
+      <div class="team-grid">
+        {team.map((member) => (
+          <div class="team-card">
+            <div class="team-avatar" aria-hidden="true">{member.initials}</div>
+            <h4>{member.name}</h4>
+            <span class="team-role">{member.role}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards & Certifications -->
+  <section class="section bg-dark" aria-labelledby="awards-heading">
+    <div class="container">
+      <div class="process-header">
+        <h2 id="awards-heading">Awards & Certifications</h2>
+        <p>Industry recognition for our commitment to excellence in construction and design.</p>
+      </div>
+
+      <div class="services-grid" style="border: none; background: none;">
+        {awards.map((award) => (
+          <div class="service-card" style="border: 1px solid rgba(255,255,255,0.05);">
+            <span class="label" style="margin-bottom: 1.5rem;">{award.year}</span>
+            <h4 style="font-size: 1rem;">{award.title}</h4>
+            <p style="color: var(--color-neutral-500); font-size: 0.75rem; margin-top: 0.5rem;">{award.org}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner" aria-labelledby="about-cta-heading">
+    <div class="cta-banner-bg" aria-hidden="true"></div>
+    <div class="cta-banner-overlay" aria-hidden="true"></div>
+    <div class="cta-banner-content">
+      <h2 id="about-cta-heading">Want to Work With Us?</h2>
+      <p>We're always looking for talented professionals who share our obsession with quality.</p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-dark">
+          Get in Touch
+          <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

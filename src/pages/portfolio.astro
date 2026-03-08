@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+
+import glassHouseImg from '../assets/images/project-glass-house.jpg';
+import apexPlazaImg from '../assets/images/project-apex-plaza.jpg';
+import heritageLoftImg from '../assets/images/project-heritage-loft.jpg';
+import riversideImg from '../assets/images/project-riverside.jpg';
+import summitImg from '../assets/images/project-summit.jpg';
+import forgeImg from '../assets/images/project-forge.jpg';
+import oakmontImg from '../assets/images/project-oakmont.jpg';
+
+const projects = [
+  {
+    title: "The Glass House",
+    location: "Greenwich, CT",
+    image: glassHouseImg,
+    category: "Residential",
+    year: "2025",
+    sqft: "8,200",
+    desc: "A stunning contemporary residence featuring floor-to-ceiling glass walls, cantilevered living spaces, and a 60-foot infinity pool overlooking Long Island Sound."
+  },
+  {
+    title: "Apex Plaza",
+    location: "Austin, TX",
+    image: apexPlazaImg,
+    category: "Commercial",
+    year: "2024",
+    sqft: "145,000",
+    desc: "A 12-story mixed-use commercial tower with Class A office space, ground-floor retail, and a rooftop amenity deck with panoramic views of downtown Austin."
+  },
+  {
+    title: "Heritage Loft",
+    location: "Brooklyn, NY",
+    image: heritageLoftImg,
+    category: "Renovation",
+    year: "2024",
+    sqft: "4,800",
+    desc: "A meticulous conversion of a 1920s industrial warehouse into luxury loft residences, preserving original timber beams and cast-iron columns."
+  },
+  {
+    title: "Riverside Manor",
+    location: "Nashville, TN",
+    image: riversideImg,
+    category: "Residential",
+    year: "2023",
+    sqft: "12,500",
+    desc: "An expansive estate on the Cumberland River featuring hand-laid stone facades, a climate-controlled wine cellar, and a detached guest house."
+  },
+  {
+    title: "Summit Tower",
+    location: "Denver, CO",
+    image: summitImg,
+    category: "Commercial",
+    year: "2023",
+    sqft: "220,000",
+    desc: "A LEED Platinum-certified high-rise featuring an innovative double-skin facade, net-zero energy systems, and panoramic mountain views from every floor."
+  },
+  {
+    title: "The Forge",
+    location: "Detroit, MI",
+    image: forgeImg,
+    category: "Renovation",
+    year: "2022",
+    sqft: "35,000",
+    desc: "A historic Ford-era factory transformed into a vibrant co-working space and artisan marketplace, blending industrial heritage with modern amenities."
+  },
+  {
+    title: "Oakmont Residence",
+    location: "Scottsdale, AZ",
+    image: oakmontImg,
+    category: "Residential",
+    year: "2022",
+    sqft: "6,400",
+    desc: "A desert-modern masterpiece with rammed-earth walls, passive cooling systems, and seamless indoor-outdoor living spaces designed for the Sonoran landscape."
+  }
+];
+
+const categories = ["All", ...new Set(projects.map(p => p.category))];
+---
+
+<BaseLayout title="Portfolio — Iron & Oak Construction" description="Browse Iron & Oak's portfolio of landmark projects, from custom luxury homes to commercial towers and historic renovations across the United States.">
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <span class="label">Our Work</span>
+      <h1>Portfolio</h1>
+      <p>A curated selection of projects that showcase our range, our craft, and our commitment to structural excellence.</p>
+    </div>
+  </header>
+
+  <!-- Portfolio Grid -->
+  <section class="section" aria-labelledby="portfolio-grid-heading">
+    <div class="container">
+      <h2 class="sr-only" id="portfolio-grid-heading">Project Gallery</h2>
+
+      <!-- Filters -->
+      <div class="portfolio-filters" role="group" aria-label="Filter projects by category">
+        {categories.map((cat, i) => (
+          <button class={`filter-btn${i === 0 ? " active" : ""}`} data-filter={cat.toLowerCase()}>
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <!-- Projects -->
+      <div class="portfolio-grid" id="portfolio-grid">
+        {projects.map((project) => (
+          <article class="project-card" data-category={project.category.toLowerCase()}>
+            <div class="project-card-image">
+              <Image
+                src={project.image}
+                alt={`${project.title} — ${project.category} project in ${project.location}`}
+                width={600}
+                height={750}
+                format="webp"
+                loading="lazy"
+              />
+              <span class="project-card-badge">{project.category}</span>
+            </div>
+            <h3 style="font-size: 1.375rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.025em; margin-bottom: 0.25rem;">{project.title}</h3>
+            <p class="project-card-location" style="margin-bottom: 0.75rem;">{project.location} · {project.year}</p>
+            <p style="color: var(--color-neutral-500); font-size: 0.8125rem; line-height: 1.7;">{project.desc}</p>
+            <div style="display: flex; gap: 1rem; margin-top: 1rem; font-size: 0.6875rem; color: var(--color-neutral-500);">
+              <span><strong style="color: var(--color-copper);">{project.sqft}</strong> sq ft</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner" aria-labelledby="portfolio-cta-heading">
+    <div class="cta-banner-bg" aria-hidden="true"></div>
+    <div class="cta-banner-overlay" aria-hidden="true"></div>
+    <div class="cta-banner-content">
+      <h2 id="portfolio-cta-heading">Your Project Could Be Next</h2>
+      <p>Let's discuss how we can bring your vision to life with the same precision and care.</p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-dark">
+          Start Your Project
+          <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.project-card[data-category]');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+
+      cards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        if (filter === 'all' || category === filter) {
+          (card as HTMLElement).style.display = '';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
